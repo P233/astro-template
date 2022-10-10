@@ -1,0 +1,4 @@
+{
+  "extends": ["@p233/stylelint-config-scss", "@p233/stylelint-config-scss/order-bootstrap"],
+  "customSyntax": "postcss-html"
+}
