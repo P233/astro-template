@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "eslint": "./node_modules/.bin/eslint -c .eslintrc.js --fix ./src/**/*.astro",
-    "stylelint": "./node_modules/.bin/stylelint --fix ./src/**/*.{astro,scss}"
+    "stylelint": "./node_modules/.bin/stylelint --fix ./src/**/*.{astro,scss}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "astro": "^1.4.6"
@@ -23,11 +24,26 @@
     "eslint-plugin-astro": "^0.20.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.17",
     "postcss-html": "^1.5.0",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.5",
     "sass": "^1.55.0",
     "stylelint": "^14.13.0"
+  },
+  "lint-staged": {
+    "*.astro": [
+      "eslint --fix --max-warnings 0",
+      "stylelint --fix"
+    ],
+    "!(package*).json": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
   }
 }
