@@ -1,0 +1,20 @@
+@use "sass:math";
+
+@function ms($n) {
+  $_ratio: 1.125;
+  $_result: 1rem;
+
+  @if $n > 0 {
+    @for $i from 1 through $n {
+      $_result: $_result * $_ratio;
+    }
+  }
+
+  @if $n < 0 {
+    @for $i from 1 through math.abs($n) {
+      $_result: math.div($_result, $_ratio);
+    }
+  }
+
+  @return $_result;
+}
