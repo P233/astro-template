@@ -1,5 +1,9 @@
 @use "sass:math";
 
+@function rhythm($n) {
+  @return 8px * $n;
+}
+
 @function ms($n) {
   $_ratio: 1.125;
   $_result: 1rem;

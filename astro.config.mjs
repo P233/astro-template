@@ -1,8 +1,9 @@
-import { fileURLToPath } from "url";
-import path, { dirname } from "path";
 import { defineConfig } from "astro/config";
 import compress from "astro-compress";
+import prefetch from "@astrojs/prefetch";
 import autoprefixer from "autoprefixer";
+import sitemap from "@astrojs/sitemap";
+import robotsTxt from "astro-robots-txt";
 
 let modulesConfig = {
   generateScopedName: "[local]-[hash:base64:4]"
@@ -27,7 +28,14 @@ if (process.env.IS_PROD) {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [compress()],
+  integrations: [
+    prefetch({
+      selector: "a[href^='/']"
+    }),
+    sitemap(),
+    robotsTxt(),
+    compress()
+  ],
   vite: {
     css: {
       modules: modulesConfig,
@@ -41,9 +49,7 @@ export default defineConfig({
       }
     },
     resolve: {
-      alias: {
-        "~/": `${path.resolve(dirname(fileURLToPath(import.meta.url)), "src")}/`
-      }
+      alias: [{ find: "~", replacement: "/src/" }]
     }
   }
 });
