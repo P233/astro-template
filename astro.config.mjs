@@ -1,9 +1,9 @@
 import { defineConfig } from "astro/config";
-import compress from "astro-compress";
 import prefetch from "@astrojs/prefetch";
-import autoprefixer from "autoprefixer";
 import sitemap from "@astrojs/sitemap";
+import compress from "astro-compress";
 import robotsTxt from "astro-robots-txt";
+import autoprefixer from "autoprefixer";
 
 let modulesConfig = {
   generateScopedName: "[local]-[hash:base64:4]"
