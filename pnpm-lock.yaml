@@ -49,6 +49,9 @@ devDependencies:
   lint-staged:
     specifier: ^15.0.2
     version: 15.0.2
+  ms-sass:
+    specifier: ^1.0.0
+    version: 1.0.0
   postcss:
     specifier: ^8.4.31
     version: 8.4.31
@@ -4301,6 +4304,10 @@ packages:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
     dev: false
+
+  /ms-sass@1.0.0:
+    resolution: {integrity: sha512-NJ/tD32VBE84c0xGOmOM4iIQoodmSJ+gNyHNhGbwnTU+ODr+hWA59vgRMmLWiXjGqieZHIQst1V4mK+DjOptiA==}
+    dev: true
 
   /ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
