@@ -1,53 +1,58 @@
 {
   "name": "astro-template",
+  "description": "",
   "version": "0.0.0",
-  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "eslint": "./node_modules/.bin/eslint -c .eslintrc.json --fix ./src/**/*.astro",
-    "stylelint": "./node_modules/.bin/stylelint --fix ./src/**/*.{astro,scss}",
-    "prepare": "husky install"
+    "lint": "tsc && eslint --fix && stylelint --fix './src/**/*.{astro,scss}' && prettier --write './src/**/*.astro'",
+    "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/prefetch": "^0.4.1",
-    "@astrojs/sitemap": "^3.0.2",
-    "astro": "^3.4.0",
-    "astro-compress": "^2.2.0",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/ts-plugin": "^1.10.4",
+    "astro": "^5.1.3",
     "astro-robots-txt": "^1.0.0"
   },
   "devDependencies": {
-    "@p233/stylelint-config-scss": "^4.0.1",
-    "@typescript-eslint/parser": "^6.9.0",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.52.0",
-    "eslint-plugin-astro": "^0.29.1",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^5.0.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.2",
-    "ms-sass": "^1.0.0",
-    "postcss": "^8.4.31",
-    "postcss-html": "^1.5.0",
-    "prettier": "^3.0.3",
-    "prettier-plugin-astro": "0.12.1",
-    "sass": "^1.69.5",
-    "stylelint": "^15.11.0"
+    "@playform/compress": "^0.1.7",
+    "@typescript-eslint/parser": "^8.19.1",
+    "cssnano": "^7.0.6",
+    "cssnano-preset-advanced": "^7.0.6",
+    "eslint": "^9.17.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "postcss": "^8.4.49",
+    "postcss-html": "^1.7.0",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "0.14.1",
+    "sass": "^1.83.1",
+    "stylelint": "^16.12.0",
+    "stylelint-config-recess-order": "^5.1.1",
+    "stylelint-prettier": "^5.0.2",
+    "typescript-eslint": "^8.19.1"
   },
   "lint-staged": {
     "*.astro": [
+      "eslint --fix --max-warnings 0",
       "stylelint --fix",
-      "eslint --fix --max-warnings 0"
+      "prettier --write"
     ],
-    "!(package*).json": [
+    "*.{ts,tsx}": [
+      "eslint --fix --max-warnings 0",
       "prettier --write"
     ],
     "*.scss": [
-      "prettier --write",
       "stylelint --fix"
+    ],
+    "!(package*).json": [
+      "prettier --write"
     ]
   }
 }

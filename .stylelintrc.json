@@ -1,4 +1,13 @@
 {
-  "extends": ["@p233/stylelint-config-scss"],
-  "customSyntax": "postcss-html"
+  "extends": ["stylelint-config-recess-order", "stylelint-prettier/recommended"],
+  "overrides": [
+    {
+      "files": ["./src/**/*.astro"],
+      "customSyntax": "postcss-html"
+    },
+    {
+      "files": ["./src/**/*.scss"],
+      "customSyntax": "postcss-scss"
+    }
+  ]
 }

@@ -1,15 +1,12 @@
 import { defineConfig } from "astro/config";
-import prefetch from "@astrojs/prefetch";
+import cssnano from "cssnano";
 import sitemap from "@astrojs/sitemap";
-import compress from "astro-compress";
 import robotsTxt from "astro-robots-txt";
-import autoprefixer from "autoprefixer";
+import playformCompress from "@playform/compress";
 
-let modulesConfig = {
-  generateScopedName: "[local]-[hash:base64:4]"
-};
-
-if (process.env.IS_PROD) {
+// https://peiwen.lu/posts/hashing-collision-detectionn
+let modulesConfig = { generateScopedName: "[local]-[hash:base64:4]" };
+if (process.env.NODE_ENV === "production") {
   const fileSet = {};
   const hashSet = {};
   modulesConfig = {
@@ -28,19 +25,16 @@ if (process.env.IS_PROD) {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    prefetch({
-      selector: "a[href^='/']"
-    }),
-    sitemap(),
-    robotsTxt(),
-    compress()
-  ],
+  site: "https://your-domain.com",
+  prefetch: true,
+  integrations: [sitemap(), robotsTxt(), playformCompress()],
   vite: {
     css: {
       modules: modulesConfig,
       postcss: {
-        plugins: [autoprefixer()]
+        plugins: [
+          cssnano({ preset: ["cssnano-preset-advanced", { discardUnused: { fontFace: false } }] })
+        ]
       },
       preprocessorOptions: {
         scss: {

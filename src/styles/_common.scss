@@ -1,9 +1,3 @@
-@forward "ms-sass" with (
-  $default-base: 16px,
-  $default-ratio: 1.125
-);
-
-// Functions
 @function rhythm($n) {
   @return 8px * $n;
 }
